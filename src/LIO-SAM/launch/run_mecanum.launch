@@ -8,6 +8,9 @@
     <!--- IMU -->
     <include file="$(find ros-ngimu)/launch/run_cal.launch" />
     
+    <!--- mecanum control -->
+    <include file="$(find openrobot_control)/launch/openrobot_control_6omni.launch" />
+    
     <!--- velodyne -->
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
 

@@ -11,18 +11,19 @@
 	ls /dev/ttyUSB* 
 	sudo chmod 666 /dev/tty*
 	
-## 3. Record topic
+## 3. Record topic && play rosbag
 	rosbag record /velodyne_points /tf /imu/data
 	roscore
 	rosparam set /use_sim_time true
+	
 	rosbag play --clock --pause rosbag/*.bag
+	rosbag play --clock --pause rosbag/*.bag --topic /velodyne_points /tf /imu/data
 
-## 4. Run lio sam (test)
+## 4. Run lio sam
 	roslaunch velodyne_pointcloud VLP16_points.launch
 	roslaunch ros-ngimu run.launch
-
 	roslaunch lio_sam run.launch 
-	rosbag play --clock --pause rosbag/*.bag --topic /velodyne_points /tf /imu/data
+
 	
 ## 5. Run mecanum_robot_control_joy && mecanum of lio sam 
 
