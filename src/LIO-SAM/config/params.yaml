@@ -31,10 +31,10 @@ lio_sam:
   lidarMaxRange: 1000.0                       # default: 1000.0, maximum lidar range to be used
 
   # IMU Settings
-  imuAccNoise: 0.4 # 3.9939570888238808e-03 
-  imuGyrNoise: 0.4 # 1.5636343949698187e-03 
-  imuAccBiasN: 0.4 # 6.4356659353532566e-05
-  imuGyrBiasN: 0.4 # 3.5640318696367613e-05
+  imuAccNoise: 1 # 3.9939570888238808e-03 
+  imuGyrNoise: 0.5 # 1.5636343949698187e-03 
+  imuAccBiasN: 1 # 6.4356659353532566e-05
+  imuGyrBiasN: 0.5 # 3.5640318696367613e-05
   imuGravity: -9.80511
   imuRPYWeight: 0.01
 
@@ -69,8 +69,8 @@ lio_sam:
   rotation_tollerance: 1000                     # radians
 
   # CPU Params
-  numberOfCores: 10                              # number of cores for mapping optimization
-  mappingProcessInterval: 0.15                  # seconds, regulate mapping frequency
+  numberOfCores: 8                              # number of cores for mapping optimization
+  mappingProcessInterval: 0.2                  # seconds, regulate mapping frequency
 
   # Surrounding map
   surroundingkeyframeAddingDistThreshold: 1.0   # meters, regulate keyframe adding threshold

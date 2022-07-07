@@ -35,4 +35,9 @@
 	```
 	https://jstar0525.tistory.com/118
 	```
+* fatal error: pcap.h: No such file or directory
+	```
+	sudo apt-get update && sudo apt-get install libpcap-dev
+	```
+
 
