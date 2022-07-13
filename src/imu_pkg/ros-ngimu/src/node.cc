@@ -61,7 +61,7 @@ void ngimuSensorsCallback(const NgimuSensors ngimuSensors)
 
     // accelerometer
     imuData.linear_acceleration.x = ngimuSensors.accelerometerX * 9.8;
-    imuData.linear_acceleration.y = ngimuSensors.accelerometerY * 9.8;
+    imuData.linear_acceleration.y = (ngimuSensors.accelerometerY * 9.8) + 0.2;
     imuData.linear_acceleration.z = ngimuSensors.accelerometerZ * 9.8;
 
     // gyroscope
