@@ -2,7 +2,7 @@ lio_sam:
 
   # Topics
   pointCloudTopic: "velodyne_points"               # Point cloud data
-  imuTopic: "imu//low_pass"                         # IMU data
+  imuTopic: "imu/low_pass"                         # IMU data
   odomTopic: "odometry/imu"                   # IMU pre-preintegration odometry, same frequency as IMU
   gpsTopic: "odometry/gpsz"                   # GPS odometry topic from navsat, see module_navsat.launch file
 
@@ -31,11 +31,11 @@ lio_sam:
   lidarMaxRange: 1000.0                       # default: 1000.0, maximum lidar range to be used
 
   # IMU Settings
-  imuAccNoise: 1 # 3.9939570888238808e-03 
-  imuGyrNoise: 0.5 # 1.5636343949698187e-03 
-  imuAccBiasN: 1 # 6.4356659353532566e-05
-  imuGyrBiasN: 0.5 # 3.5640318696367613e-05
-  imuGravity: -9.80511
+  imuAccNoise: 1.0
+  imuGyrNoise: 1.5636343949698187e-03 
+  imuAccBiasN: 0.03
+  imuGyrBiasN: 3.5640318696367613e-05
+  imuGravity: 9.80511
   imuRPYWeight: 0.01
 
   # Extrinsics (lidar -> IMU)
@@ -47,11 +47,11 @@ lio_sam:
   #                -1, 0, 0,
   #                 0, 0, 1]
   extrinsicRot: [1, 0, 0,
-                  0, 1, 0,
-                  0, 0, 1]
-  extrinsicRPY: [1, 0, 0,
                   0, -1, 0,
                   0, 0, -1]
+  extrinsicRPY: [1, 0, 0,
+                  0, 1, 0,
+                  0, 0, 1]
 
   # LOAM feature threshold
   edgeThreshold: 1.0
@@ -60,17 +60,17 @@ lio_sam:
   surfFeatureMinValidNum: 100
 
   # voxel filter paprams
-  odometrySurfLeafSize: 0.4                     # default: 0.4 - outdoor, 0.2 - indoor
-  mappingCornerLeafSize: 0.2                    # default: 0.2 - outdoor, 0.1 - indoor
-  mappingSurfLeafSize: 0.4                      # default: 0.4 - outdoor, 0.2 - indoor
+  odometrySurfLeafSize: 0.2                    # default: 0.4 - outdoor, 0.2 - indoor
+  mappingCornerLeafSize: 0.1                    # default: 0.2 - outdoor, 0.1 - indoor
+  mappingSurfLeafSize: 0.2                      # default: 0.4 - outdoor, 0.2 - indoor
 
   # robot motion constraint (in case you are using a 2D robot)
   z_tollerance: 1000                            # meters
   rotation_tollerance: 1000                     # radians
 
   # CPU Params
-  numberOfCores: 8                              # number of cores for mapping optimization
-  mappingProcessInterval: 0.2                  # seconds, regulate mapping frequency
+  numberOfCores: 6                          # number of cores for mapping optimization
+  mappingProcessInterval: 0.15                # seconds, regulate mapping frequency
 
   # Surrounding map
   surroundingkeyframeAddingDistThreshold: 1.0   # meters, regulate keyframe adding threshold

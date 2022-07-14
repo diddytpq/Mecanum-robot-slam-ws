@@ -6,7 +6,8 @@
     <rosparam file="$(find lio_sam)/config/params.yaml" command="load" />
 
     <!--- IMU -->
-    <include file="$(find ros-ngimu)/launch/run_cal.launch" />
+    <include file="$(find ros-ngimu)/launch/run.launch" />
+    <!-- <include file="$(find lio_sam)/launch/include/imu_test.launch" /> -->
 
     <!--- velodyne -->
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
@@ -18,7 +19,7 @@
     <include file="$(find lio_sam)/launch/include/module_robot_state_publisher.launch" />
 
     <!--- Run Navsat -->
-    <include file="$(find lio_sam)/launch/include/module_navsat.launch" />
+    <!-- <include file="$(find lio_sam)/launch/include/module_navsat.launch" /> -->
 
     <!--- Run Rviz-->
     <include file="$(find lio_sam)/launch/include/module_rviz.launch" />
