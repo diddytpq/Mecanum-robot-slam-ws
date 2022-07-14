@@ -9,7 +9,7 @@
 
 ## 2. check usb port and port permission 
 	ls /dev/ttyUSB* 
-	sudo chmod 666 /dev/tty*
+	sudo chmod 666 /dev/tty* # vesc, imu, joy
 	
 ## 3. Record topic && play rosbag
 	rosbag record /velodyne_points /tf /imu/data
@@ -27,8 +27,9 @@
 	
 ## 5. Run mecanum_robot_control_joy && mecanum of lio sam 
 
-	roslaunch openrobot_control openrobot_control_6omni.launch
+	roslaunch openrobot_control_6omni openrobot_control_6omni.launch
 	roslaunch lio_sam run_mecanum.launch
+	roslaunch lio_sam test.launch
 
 
 ## 6. trouble shooting

@@ -6,10 +6,10 @@
     <rosparam file="$(find lio_sam)/config/params.yaml" command="load" />
 
     <!--- IMU -->
-    <include file="$(find ros-ngimu)/launch/run_cal.launch" />
+    <include file="$(find ros-ngimu)/launch/run.launch" />
     
     <!--- mecanum control -->
-    <include file="$(find openrobot_control)/launch/openrobot_control_6omni.launch" />
+    <include file="$(find openrobot_control_6omni)/launch/openrobot_control_6omni.launch" />
     
     <!--- velodyne -->
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
