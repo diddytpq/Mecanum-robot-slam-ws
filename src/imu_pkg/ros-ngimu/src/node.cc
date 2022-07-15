@@ -97,9 +97,9 @@ void ngimuQuaternionCallback(const NgimuQuaternion ngimuQuaternion)
     // set time
     imuData.header.stamp = ros::Time::now();
 
-    imuData.orientation.x = ngimuQuaternion.x;
-    imuData.orientation.y = ngimuQuaternion.y;
-    imuData.orientation.z = ngimuQuaternion.z;
+    imuData.orientation.x = -ngimuQuaternion.x;
+    imuData.orientation.y = -ngimuQuaternion.y;
+    imuData.orientation.z = -ngimuQuaternion.z;
     imuData.orientation.w = ngimuQuaternion.w;
 
     imu_low_pass_data = imuData;
@@ -130,7 +130,7 @@ void ngimuTemperatureCallback(const NgimuTemperature ngimuTemperature)
 
 void initComPort()
 {
-    int serialPort = open("/dev/ttyACM1", O_RDWR);
+    int serialPort = open("/dev/ttyACM0", O_RDWR);
 
     ROS_INFO("SUCCESS connect IMU sensor");
 
