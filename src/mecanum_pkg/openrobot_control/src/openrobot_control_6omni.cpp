@@ -82,8 +82,8 @@ void TeleopInput::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 	//ROS_INFO("%d, %d, %d, %d", joy->buttons[0], joy->buttons[1], joy->buttons[2], joy->buttons[3]);	// 0, 1, 2, 3 : X, A, B, Y
 
 	joy_cmd_forward = -(joy->axes[0])*(1.5); // 5.5
-	joy_cmd_lateral = (joy->axes[3])*(1.5);
-	joy_cmd_steering = (joy->axes[1])*(1); // 3.5
+	joy_cmd_lateral = (joy->axes[3])*(1);
+	joy_cmd_steering = (joy->axes[1])*(0.5); // 3.5
 
 	vh1_->speed[0] = joy_cmd_forward;
 	vh1_->speed[1] = joy_cmd_lateral;
