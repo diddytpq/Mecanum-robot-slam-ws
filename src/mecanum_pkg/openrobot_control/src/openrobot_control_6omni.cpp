@@ -81,8 +81,8 @@ void TeleopInput::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 	//ROS_INFO("%.3f, %.3f, %.3f, %.3f", joy->axes[0], joy->axes[1], joy->axes[2], joy->axes[3]);
 	//ROS_INFO("%d, %d, %d, %d", joy->buttons[0], joy->buttons[1], joy->buttons[2], joy->buttons[3]);	// 0, 1, 2, 3 : X, A, B, Y
 
-	joy_cmd_forward = -(joy->axes[0])*(1.5); // 5.5
-	joy_cmd_lateral = (joy->axes[3])*(1);
+	joy_cmd_forward = -(joy->axes[0])*(1.0); // 5.5
+	joy_cmd_lateral = (joy->axes[3])*(1.0);
 	joy_cmd_steering = (joy->axes[1])*(0.5); // 3.5
 
 	vh1_->speed[0] = joy_cmd_forward;
@@ -400,7 +400,7 @@ int main(int argc, char **argv)
 	TeleopInput tele_input(teleop_vesc[0], teleop_vesc[1], teleop_vesc[2]);
 
 	// Velocity Profile
-	float amax = 1.0;	// m/s^2
+	float amax = 3.0;	// m/s^2
 	static float vout_x, vout_y, vout_z;
 	TrapezoidalVelProfile v_prof_x(amax, 1./rate_hz);
 	TrapezoidalVelProfile v_prof_y(1.0*amax, 1./rate_hz);
