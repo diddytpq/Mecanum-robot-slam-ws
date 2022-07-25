@@ -17,7 +17,7 @@
 	rosparam set /use_sim_time true
 	
 	rosbag play --clock --pause rosbag/*.bag
-	rosbag play --clock --pause rosbag/*.bag --topic /velodyne_points /tf /imu/data
+	rosbag play --clock --pause rosbag/*.bag --topic /velodyne_points /tf /imu/data --start 0
 
 ## 4. Run lio sam
 	roslaunch velodyne_pointcloud VLP16_points.launch
@@ -27,12 +27,14 @@
 	
 ## 5. Run mecanum_robot_control_joy && mecanum of lio sam 
 
-	roslaunch openrobot_control_6omni openrobot_control_6omni.launch
 	roslaunch lio_sam run_mecanum.launch
-	roslaunch lio_sam test.launch
 
+## 6. view PCL MAP
+ *https://pcl.gitbook.io/tutorial/appendix/visualization-tools
 
-## 6. trouble shooting
+	pcl_viewer -multiview 1 [파일명]
+
+## 7. trouble shooting
 * cv_bridge Error
 	```
 	https://jstar0525.tistory.com/118
