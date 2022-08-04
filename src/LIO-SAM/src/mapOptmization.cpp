@@ -1285,7 +1285,7 @@ public:
             kdtreeCornerFromMap->setInputCloud(laserCloudCornerFromMapDS);
             kdtreeSurfFromMap->setInputCloud(laserCloudSurfFromMapDS);
 
-            for (int iterCount = 0; iterCount < 100; iterCount++)
+            for (int iterCount = 0; iterCount < 150; iterCount++)
             {
                 laserCloudOri->clear();
                 coeffSel->clear();

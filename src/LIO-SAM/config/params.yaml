@@ -20,7 +20,7 @@ lio_sam:
   
   # Export settings
   savePCD: true                              # https://github.com/TixiaoShan/LIO-SAM/issues/3
-  savePCDDirectory: "/Downloads/LOAM1/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
+  savePCDDirectory: "/workspace/Mecanum-robot-slam-ws/pcl_map/test"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
 
   # Sensor Settings
   sensor: velodyne                            # lidar sensor type, either 'velodyne' or 'ouster'
@@ -68,9 +68,9 @@ lio_sam:
   surfFeatureMinValidNum: 100
 
   # voxel filter paprams
-  odometrySurfLeafSize: 0.1                    # default: 0.4 - outdoor, 0.2 - indoor
-  mappingCornerLeafSize: 0.1                    # default: 0.2 - outdoor, 0.1 - indoor
-  mappingSurfLeafSize: 0.1                      # default: 0.4 - outdoor, 0.2 - indoor
+  odometrySurfLeafSize: 0.4                    # default: 0.4 - outdoor, 0.2 - indoor
+  mappingCornerLeafSize: 0.2                    # default: 0.2 - outdoor, 0.1 - indoor
+  mappingSurfLeafSize: 0.4                      # default: 0.4 - outdoor, 0.2 - indoor
 
   # robot motion constraint (in case you are using a 2D robot)
   z_tollerance: 1000                            # meters

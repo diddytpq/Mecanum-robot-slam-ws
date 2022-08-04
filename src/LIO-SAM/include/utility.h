@@ -24,6 +24,7 @@
 #include <pcl/common/common.h>
 #include <pcl/common/transforms.h>
 #include <pcl/registration/icp.h>
+#include <pcl/registration/ndt.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/filters/filter.h>
 #include <pcl/filters/voxel_grid.h>
@@ -93,6 +94,7 @@ public:
     SensorType sensor;
     int N_SCAN;
     int Horizon_SCAN;
+    string timeField;
     int downsampleRate;
     float lidarMinRange;
     float lidarMaxRange;
@@ -191,6 +193,7 @@ public:
 
         nh.param<int>("lio_sam/N_SCAN", N_SCAN, 16);
         nh.param<int>("lio_sam/Horizon_SCAN", Horizon_SCAN, 1800);
+        nh.param<std::string>("lio_sam/timeField", timeField, "time");
         nh.param<int>("lio_sam/downsampleRate", downsampleRate, 1);
         nh.param<float>("lio_sam/lidarMinRange", lidarMinRange, 1.0);
         nh.param<float>("lio_sam/lidarMaxRange", lidarMaxRange, 1000.0);

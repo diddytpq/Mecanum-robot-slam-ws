@@ -34,7 +34,12 @@
 
 	pcl_viewer -multiview 1 [파일명]
 
-## 7. trouble shooting
+## 7. view PCL MAP
+ *https://github.com/Gaochao-hit/LIO-SAM_based_relocalization
+
+	roslaunch lio_sam run_localize.launch
+
+## 8. trouble shooting
 * cv_bridge Error
 	```
 	https://jstar0525.tistory.com/118
