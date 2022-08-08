@@ -34,10 +34,10 @@
 
 	pcl_viewer -multiview 1 [파일명]
 
-## 7. view PCL MAP
+## 7. Run localization based lio sam
  *https://github.com/Gaochao-hit/LIO-SAM_based_relocalization
 
-	roslaunch lio_sam run_localize.launch
+	roslaunch lio_sam_localization run_relocalize.launch
 
 ## 8. trouble shooting
 * cv_bridge Error
