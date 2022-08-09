@@ -32,7 +32,7 @@
 ## 6. view PCL MAP
  *https://pcl.gitbook.io/tutorial/appendix/visualization-tools
 
-	pcl_viewer -multiview 1 [파일명]
+	pcl_viewer -fc 255,255,255 -ps 1 -multiview 1 [파일명]
 
 ## 7. Run localization based lio sam
  *https://github.com/Gaochao-hit/LIO-SAM_based_relocalization
