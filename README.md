@@ -50,3 +50,13 @@
 	```
 
 
+## 8. gazebo simulation
+
+	roslaunch mecanum_robot_gazebo mecanum_velodyne.launch
+
+	roslaunch lio_sam run.launch
+	roslaunch lio_sam_localization run_relocalize.launch
+
+	roslaunch vehicle_simulator system_real_robot.launch 
+	roslaunch far_planner test.launch 
+

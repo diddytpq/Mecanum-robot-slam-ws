@@ -82,11 +82,13 @@
       <visual>
         <geometry>
           <mesh filename="package://velodyne_description/meshes/VLP16_base_1.dae" />
+          <!-- <box size="0.10 0.10 0.10"/> -->
         </geometry>
       </visual>
       <visual>
         <geometry>
           <mesh filename="package://velodyne_description/meshes/VLP16_base_2.dae" />
+          <!-- <box size="0.10 0.10 0.10"/> -->
         </geometry>
       </visual>
       <collision>
@@ -113,11 +115,31 @@
         <origin xyz="0 0 -0.0377" />
         <geometry>
           <mesh filename="package://velodyne_description/meshes/VLP16_scan.dae" />
+              <!-- <box size="0.10 0.10 0.10"/> -->
         </geometry>
       </visual>
     </link>
   
+      <joint name="camera_joint" type="fixed">
+          <parent link="base_link"/>
+          <child link="camera"/>
+          <origin xyz="0.25 -0.08 0" rpy="0 0 0"/>
+      </joint>
 
+      <link name="camera">
+          <visual>
+            <origin xyz="0 0 0" rpy="1.57 0 1.57"/>
+            <geometry>
+              <box size="0.05 0.05 0.05"/>
+            </geometry>
+          </visual>
+          <collision>
+            <origin xyz="0.003 0.065 0.007" rpy="0 0 0"/>
+            <geometry>
+              <box size="0.012 0.132 0.020"/>
+            </geometry>
+          </collision>
+      </link>
 
     </xacro:macro>
 </robot>

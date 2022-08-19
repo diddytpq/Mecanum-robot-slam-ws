@@ -1,5 +1,17 @@
-/devel
-/build
+# Compiled source #
+###################
 
-*.bag
+build/
+devel/
+
+*.pt
+
+
+#dataset
+
+*.pkl
+
+vehicle_simulator/
+test_data/
+
 
