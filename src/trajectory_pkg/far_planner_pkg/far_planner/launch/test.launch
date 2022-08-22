@@ -1,7 +1,7 @@
 <launch>
 
   <arg name="world_name" default="gazebo_sim"/>
-  <arg name="cameraOffsetZ" default="0.1"/>
+  <arg name="cameraOffsetZ" default="-0.2"/>
   <arg name="vehicleX" default="0"/>
   <arg name="vehicleY" default="0"/>
   <arg name="checkTerrainConn" default="false"/>

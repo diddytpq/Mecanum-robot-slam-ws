@@ -21,7 +21,7 @@
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
     args="-urdf -x $(arg x_pos) -y $(arg y_pos)  -z $(arg z_pos)   -model mecanum -param robot_description"/>
 
-  <node name="mecanum_control_keyboard" pkg="mecanum_robot_gazebo"  type="keyborad_control_sim.py" output="screen"/>
+  <!-- <node name="mecanum_control_keyboard" pkg="mecanum_robot_gazebo"  type="keyborad_control_sim.py" output="screen"/> -->
 
   <!-- convert joint states to TF transforms for rviz, etc -->
   <!-- Publish joint values -->

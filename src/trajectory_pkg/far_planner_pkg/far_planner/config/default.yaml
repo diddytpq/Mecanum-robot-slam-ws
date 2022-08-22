@@ -2,15 +2,15 @@
 main_run_freq                           : 2.5
 voxel_dim                               : 0.15  # Unit: meter
 robot_dim                               : 0.8   # Unit: meter
-vehicle_height                          : 0.75  # Unit: meter
-sensor_range                            : 30.0  # Unit: meter
+vehicle_height                          : 0.30  # Unit: meter
+sensor_range                            : 100.0  # Unit: meter
 terrain_range                           : 15.0  # Unit: meter
 local_planner_range                     : 5.0   # Unit: meter
 visualize_ratio                         : 0.75
 is_viewpoint_extend                     : true
 is_multi_layer                          : false
 is_opencv_visual                        : false # Obstalce Image Display
-is_static_env                           : true
+is_static_env                           : false
 is_pub_boundary                         : false
 is_debug_output                         : false
 is_attempt_autoswitch                   : true  # Auto switch to attemptable navigation
