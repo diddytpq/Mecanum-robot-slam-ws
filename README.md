@@ -58,5 +58,5 @@
 	roslaunch lio_sam_localization run_relocalize.launch
 
 	roslaunch vehicle_simulator system_real_robot.launch 
-	roslaunch far_planner test.launch 
+	roslaunch far_planner far_planner_custom.launch 
 

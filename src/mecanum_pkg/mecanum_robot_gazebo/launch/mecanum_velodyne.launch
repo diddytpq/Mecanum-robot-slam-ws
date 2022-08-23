@@ -27,9 +27,9 @@
   <!-- Publish joint values -->
   <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
 
-  <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0" />
-  </node> -->
+  </node>
 
   <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mecanum_robot_gazebo)/rviz/mecanum_velodyne_rviz.rviz"/> -->
 
