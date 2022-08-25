@@ -1,0 +1,54 @@
+<launch>
+
+  <arg name="world_name" default="sanhak_parkinglot"/>
+  <arg name="cameraOffsetZ" default="-0.2"/>
+  <arg name="vehicleX" default="0"/>
+  <arg name="vehicleY" default="0"/>
+  <arg name="checkTerrainConn" default="false"/>
+
+  <arg name="odom_name" default="/lio_sam/mapping/odometry"/>
+
+  <!-- <include file="$(find ps3joy)/launch/ps3.launch" /> -->
+
+  <include file="$(find loam_interface)/launch/loam_interface.launch" > 
+    <arg name="odom_topic_name" value="$(arg odom_name)" />
+  </include>
+
+  <include file="$(find local_planner)/launch/local_planner_custom.launch" >
+    <arg name="cameraOffsetZ" value="$(arg cameraOffsetZ)"/>
+    <arg name="goalX" value="$(arg vehicleX)"/>
+    <arg name="goalY" value="$(arg vehicleY)"/>
+  </include>
+
+  <include file="$(find terrain_analysis)/launch/terrain_analysis.launch" />
+
+  <include file="$(find terrain_analysis_ext)/launch/terrain_analysis_ext.launch" >
+    <arg name="checkTerrainConn" value="$(arg checkTerrainConn)"/>
+  </include>
+
+  <include file="$(find sensor_scan_generation)/launch/sensor_scan_generation.launch" />
+
+
+    <!-- far planner argment -->
+    <arg name="odom_world" default="/state_estimation"/>
+    <arg name="terrain_cloud_topic" default="/terrain_map_ext"/>
+    <arg name="terrain_local_topic" default="/terrain_map"/>
+    <arg name="scan_cloud_topic" default="/registered_scan"/>
+    <arg name="config" default="real_robot"/>
+
+    <node pkg="far_planner" type="far_planner" name="far_planner" output="screen">
+        <rosparam command="load" file="$(find far_planner)/config/$(arg config).yaml" />
+        <remap from="/odom_world" to="$(arg odom_world)"/> 
+        <remap from="/terrain_cloud" to="$(arg terrain_cloud_topic)"/>
+        <remap from="/scan_cloud" to="$(arg scan_cloud_topic)"/>
+        <remap from="/terrain_local_cloud" to="$(arg terrain_local_topic)"/>
+    </node>
+    <node type="rviz" name="far_rviz" pkg="rviz" args="-d $(find far_planner)/rviz/$(arg config).rviz" respawn="true"/>
+
+    <include file="$(find visualization_tools)/launch/visualization_tools.launch" >
+        <arg name="world_name" value="$(arg world_name)"/>
+    </include>
+
+    <!-- Launch Graph Manager for saving and loading graph -->
+    <include file="$(find graph_decoder)/launch/decoder.launch" />
+</launch>

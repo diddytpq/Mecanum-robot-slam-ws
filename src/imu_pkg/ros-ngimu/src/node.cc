@@ -30,7 +30,7 @@ sensor_msgs::Imu imu_low_pass_data;
 
 sensor_msgs::MagneticField mag_data;
 
-float alpha = 0.9;
+float alpha = 0.7;
 float before_x_accel_data = 0;
 float before_y_accel_data = 0;
 float before_z_accel_data = 0;
@@ -131,7 +131,7 @@ void ngimuTemperatureCallback(const NgimuTemperature ngimuTemperature)
 
 void initComPort()
 {
-    int serialPort = open("/dev/ttyACM0", O_RDWR);
+    int serialPort = open("/dev/ttyACM2", O_RDWR);
 
     ROS_INFO("SUCCESS connect IMU sensor");
 
