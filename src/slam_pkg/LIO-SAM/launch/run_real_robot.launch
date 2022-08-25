@@ -3,7 +3,7 @@
     <arg name="project" default="lio_sam"/>
     
     <!-- Parameters -->
-    <rosparam file="$(find lio_sam)/config/params_realrobot.yaml" command="load" />
+    <rosparam file="$(find lio_sam)/config/params_real_robot.yaml" command="load" />
 
     <!--- IMU -->
     <include file="$(find ros-ngimu)/launch/run.launch" />
