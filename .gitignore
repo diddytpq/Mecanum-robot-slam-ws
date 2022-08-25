@@ -10,7 +10,7 @@ devel/
 #dataset
 
 *.pkl
-
+*.bag
 vehicle_simulator/
 test_data/
 
