@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="world_name" default="sanhak_parkinglot"/>
+  <arg name="world_name" default="mj_part_A"/>
   <arg name="cameraOffsetZ" default="-0.2"/>
   <arg name="vehicleX" default="0"/>
   <arg name="vehicleY" default="0"/>

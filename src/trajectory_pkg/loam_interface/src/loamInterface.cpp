@@ -41,6 +41,13 @@ float vehicleRoll = 0;
 float vehiclePitch = 0;
 float vehicleYaw = 0;
 
+float odomX = 0;
+float odomY = 0;
+float odomZ = 0;
+float odomRoll = 0;
+float odomPitch = 0;
+float odomYaw = 0;
+
 float terrainZ = 0;
 float terrainRoll = 0;
 float terrainPitch = 0;
@@ -48,10 +55,31 @@ float terrainPitch = 0;
 pcl::PointCloud<pcl::PointXYZI>::Ptr laserCloud(new pcl::PointCloud<pcl::PointXYZI>());
 
 nav_msgs::Odometry odomData;
+nav_msgs::Odometry maptoodomData;
+
 tf::StampedTransform odomTrans;
 ros::Publisher *pubOdometryPointer = NULL;
 tf::TransformBroadcaster *tfBroadcasterPointer = NULL;
 ros::Publisher *pubLaserCloudPointer = NULL;
+
+void maptoodometryHandler(const nav_msgs::Odometry::ConstPtr& maptoodom)
+
+{
+  double roll, pitch, yaw;
+  geometry_msgs::Quaternion geoQuat = maptoodom->pose.pose.orientation;
+  maptoodomData = *maptoodom;
+
+  tf::Matrix3x3(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w)).getRPY(roll, pitch, yaw);
+
+  odomX = maptoodom->pose.pose.position.x;
+  odomY = maptoodom->pose.pose.position.y;
+  odomZ = maptoodom->pose.pose.position.z;
+  odomRoll = roll;
+  odomPitch = pitch;
+  odomYaw = yaw;
+
+}
+
 
 void odometryHandler(const nav_msgs::Odometry::ConstPtr& odom)
 {
@@ -59,37 +87,23 @@ void odometryHandler(const nav_msgs::Odometry::ConstPtr& odom)
   geometry_msgs::Quaternion geoQuat = odom->pose.pose.orientation;
   odomData = *odom;
 
-  if (flipStateEstimation) {
-    tf::Matrix3x3(tf::Quaternion(geoQuat.z, -geoQuat.x, -geoQuat.y, geoQuat.w)).getRPY(roll, pitch, yaw);
-
-    pitch = -pitch;
-    yaw = -yaw;
-
-    geoQuat = tf::createQuaternionMsgFromRollPitchYaw(roll, pitch, yaw);
-
-    odomData.pose.pose.orientation = geoQuat;
-    odomData.pose.pose.position.x = odom->pose.pose.position.z;
-    odomData.pose.pose.position.y = odom->pose.pose.position.x;
-    odomData.pose.pose.position.z = odom->pose.pose.position.y;
-  }
-
   tf::Matrix3x3(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w)).getRPY(roll, pitch, yaw);
 
-  vehicleX = odom->pose.pose.position.x;
-  vehicleY = odom->pose.pose.position.y;
-  vehicleZ = odom->pose.pose.position.z;
-  vehicleRoll = roll;
-  vehiclePitch = pitch;
-  vehicleYaw = yaw;
+  vehicleX = odomX + odom->pose.pose.position.x;
+  vehicleY = odomY + odom->pose.pose.position.y;
+  vehicleZ = odomZ + odom->pose.pose.position.z;
+  vehicleRoll = odomRoll + roll;
+  vehiclePitch = odomPitch + pitch;
+  vehicleYaw = odomYaw + yaw;
 
   // publish odometry messages
-  odomData.header.frame_id = "map";
+  odomData.header.frame_id = "odom";
   odomData.child_frame_id = "sensor";
   pubOdometryPointer->publish(odomData);
 
   // publish tf messages
   odomTrans.stamp_ = odom->header.stamp;
-  odomTrans.frame_id_ = "map";
+  odomTrans.frame_id_ = "odom";
   odomTrans.child_frame_id_ = "sensor";
   odomTrans.setRotation(tf::Quaternion(geoQuat.x, geoQuat.y, geoQuat.z, geoQuat.w));
   odomTrans.setOrigin(tf::Vector3(odomData.pose.pose.position.x, odomData.pose.pose.position.y, odomData.pose.pose.position.z));
@@ -162,7 +176,7 @@ void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr& laserCloudIn)
   sensor_msgs::PointCloud2 laserCloud2;
   pcl::toROSMsg(*laserCloud, laserCloud2);
   laserCloud2.header.stamp = laserCloudIn->header.stamp;
-  laserCloud2.header.frame_id = "map";
+  laserCloud2.header.frame_id = "odom";
   pubLaserCloudPointer->publish(laserCloud2);
 }
 
@@ -179,6 +193,7 @@ int main(int argc, char** argv)
   nhPrivate.getParam("sendTF", sendTF);
   nhPrivate.getParam("reverseTF", reverseTF);
 
+  // ros::Subscriber subMaptoOdometry = nh.subscribe<nav_msgs::Odometry> ("/lio_sam/mapping/pose_odomTo_map", 5, maptoodometryHandler);
   ros::Subscriber subOdometry = nh.subscribe<nav_msgs::Odometry> (stateEstimationTopic, 5, odometryHandler);
 
   ros::Subscriber subLaserCloud = nh.subscribe<sensor_msgs::PointCloud2> (registeredScanTopic, 5, laserCloudHandler);

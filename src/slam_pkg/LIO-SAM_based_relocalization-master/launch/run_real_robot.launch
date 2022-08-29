@@ -1,7 +1,7 @@
 <launch>
 
     <arg name="project" default="lio_sam_localization"/>
-    <arg name="pcl_path" default="/workspace/Mecanum-robot-slam-ws/pcl_map/sanhak_parkinglot/"/>
+    <arg name="pcl_path" default="/workspace/Mecanum-robot-slam-ws/pcl_map/mj_part_A/"/>
 
     
     <!-- Parameters -->
