@@ -76,17 +76,18 @@ void laserCloudAndOdometryHandler(const nav_msgs::Odometry::ConstPtr& odometry,
   }
 
   odometryIn.header.stamp = laserCloud2->header.stamp;
-  odometryIn.header.frame_id = "map";
+  odometryIn.header.frame_id = "odom";
   odometryIn.child_frame_id = "sensor_at_scan";
   pubOdometryPointer->publish(odometryIn);
 
   transformToMap.stamp_ = laserCloud2->header.stamp;
-  transformToMap.frame_id_ = "map";
+  transformToMap.frame_id_ = "odom";
   transformToMap.child_frame_id_ = "sensor_at_scan";
   tfBroadcasterPointer->sendTransform(transformToMap);
 
   sensor_msgs::PointCloud2 scan_data;
   pcl::toROSMsg(*laserCLoudInSensorFrame, scan_data);
+  // pcl::toROSMsg(*laserCloudIn, scan_data);
   scan_data.header.stamp = laserCloud2->header.stamp;
   scan_data.header.frame_id = "sensor_at_scan";
   pubLaserCloud.publish(scan_data);
@@ -106,6 +107,8 @@ int main(int argc, char** argv)
   boost::shared_ptr<Sync> sync_;
   subOdometry.subscribe(nh, "/state_estimation", 1);
   subLaserCloud.subscribe(nh, "/registered_scan", 1);
+  // subLaserCloud.subscribe(nh, "/velodyne_points", 1);
+
   sync_.reset(new Sync(syncPolicy(100), subOdometry, subLaserCloud));
   sync_->registerCallback(boost::bind(laserCloudAndOdometryHandler, _1, _2));
 

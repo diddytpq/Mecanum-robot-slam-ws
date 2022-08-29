@@ -212,7 +212,7 @@ public:
         pubMapWorld = nh.advertise<sensor_msgs::PointCloud2>("lio_sam/mapping/cloud_map_map",1);//
         //fortest_publasercloudINWorld = nh.advertise<sensor_msgs::PointCloud2>("lio_sam/mapping/laserclouinmapframe",1);
         pubLaserCloudInWorld = nh.advertise<sensor_msgs::PointCloud2>("lio_sam/mapping/lasercloud_in_world", 1);//added
-        pubOdomToMapPose = nh.advertise<geometry_msgs::PoseStamped>("lio_sam/mapping/pose_odomTo_map", 1);
+        pubOdomToMapPose = nh.advertise<geometry_msgs::PoseStamped>("lio_sam/mapping/pose_odomTo_map", 10);
 
         //subImu      = nh.subscribe<sensor_msgs::Imu>  (imuTopic,  200, &mapOptimization::imuHandler,      this, ros::TransportHints().tcpNoDelay());
         //added ******************by gc

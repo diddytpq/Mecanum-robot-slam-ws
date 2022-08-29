@@ -227,6 +227,9 @@ int main(int argc, char **argv) {
   ros::Subscriber subLaserCloud = nh.subscribe<sensor_msgs::PointCloud2>(
       "/registered_scan", 5, laserCloudHandler);
 
+  // ros::Subscriber subLaserCloud = nh.subscribe<sensor_msgs::PointCloud2>(
+  //     "/velodyne_points", 5, laserCloudHandler);
+
   ros::Subscriber subJoystick =
       nh.subscribe<sensor_msgs::Joy>("/joy", 5, joystickHandler);
 
