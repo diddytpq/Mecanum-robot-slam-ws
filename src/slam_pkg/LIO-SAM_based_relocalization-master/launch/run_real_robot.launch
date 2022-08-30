@@ -1,13 +1,13 @@
 <launch>
 
     <arg name="project" default="lio_sam_localization"/>
-    <arg name="pcl_path" default="/workspace/Mecanum-robot-slam-ws/pcl_map/mj_part_A/"/>
+    <arg name="map_name" default="mj_part_A"/>
 
     
     <!-- Parameters -->
     <rosparam file="$(find lio_sam_localization)/config/params_realrobot.yaml" command="load" />
     
-    <param name="lio_sam/savePCDDirectory" value="$(arg pcl_path)"/>
+    <param name="lio_sam/savePCDDirectory" value="/workspace/Mecanum-robot-slam-ws/pcl_map/$(arg map_name)/"/>
 
     <!--- LOAM -->
     <include file="$(find lio_sam_localization)/launch/include/module_relocolize.launch" />

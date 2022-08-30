@@ -20,39 +20,32 @@
 	rosbag play *.bag --clock --pause --topic /velodyne_points /tf /imu/data --start 0
 
 ## 4. Run lio sam
-	roslaunch velodyne_pointcloud VLP16_points.launch
-	roslaunch ros-ngimu run.launch
 	roslaunch lio_sam run.launch 
 
-## 5. Run mecanum_robot_control_joy && mecanum of lio sam 
-
-	roslaunch lio_sam run_real_robot.launch
-
-## 6. view PCL MAP
- *https://pcl.gitbook.io/tutorial/appendix/visualization-tools
-
-	pcl_viewer -fc 255,255,255 -ps 1 -multiview 1 [파일명]
-
-## 7. Run localization based lio sam
+## 5. Run localization based lio sam
  *https://github.com/Gaochao-hit/LIO-SAM_based_relocalization
 
 	roslaunch lio_sam_localization run.launch
-	roslaunch lio_sam_localization run_real_robot.launch
+	
+## 6. real robot version
 
-## 8. Run Far planner(path planning)
+	roslaunch lio_sam run_real_robot.launch
+	roslaunch lio_sam_localization run_real_robot.launch map_name:="mj_part_A"
+	roslaunch far_planner run_real_robot.launch map_name:="mj_part_A
 
-	roslaunch far_planner run_real_robot.launch
-
-
-## 8. gazebo simulation
+## 7. gazebo simulation
 
 	roslaunch mecanum_robot_gazebo mecanum_velodyne.launch
 
 	roslaunch lio_sam run.launch
 	roslaunch lio_sam_localization run_relocalize.launch
-
 	roslaunch vehicle_simulator system_real_robot.launch 
+	roslaunch far_planner far_planner.launch
 
+## 8. view PCL MAP
+ *https://pcl.gitbook.io/tutorial/appendix/visualization-tools
+
+	pcl_viewer -fc 255,255,255 -ps 1 -multiview 1 [파일명]
 
 ## trouble shooting
  *cv_bridge Error

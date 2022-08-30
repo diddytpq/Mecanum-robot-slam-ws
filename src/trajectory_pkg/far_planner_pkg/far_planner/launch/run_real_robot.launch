@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="world_name" default="mj_part_A"/>
+  <arg name="map_name" default="mj_part_A"/>
   <arg name="cameraOffsetZ" default="-0.2"/>
   <arg name="vehicleX" default="0"/>
   <arg name="vehicleY" default="0"/>
@@ -46,7 +46,7 @@
     <node type="rviz" name="far_rviz" pkg="rviz" args="-d $(find far_planner)/rviz/$(arg config).rviz" respawn="true"/>
 
     <include file="$(find visualization_tools)/launch/visualization_tools.launch" >
-        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="world_name" value="$(arg map_name)"/>
     </include>
 
     <!-- Launch Graph Manager for saving and loading graph -->
