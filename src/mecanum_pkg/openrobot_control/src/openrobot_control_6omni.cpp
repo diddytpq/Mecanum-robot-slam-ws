@@ -50,7 +50,7 @@ typedef enum {
 #define RPS2DPS					RAD2DEG	
 
 // Uncomment this only when you want to see the below infomations.
-//#define PRINT_SENSOR_CORE
+// #define PRINT_SENSOR_CORE
 //#define PRINT_SENSOR_CUSTOMS
 
 void TeleopInput::keyboardCallback(const geometry_msgs::Twist::ConstPtr& cmd_vel)

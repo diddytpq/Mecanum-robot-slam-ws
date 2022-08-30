@@ -1,4 +1,4 @@
-<launch>
+    <launch>
 
     <arg name="project" default="lio_sam_localization"/>
     <arg name="map_name" default="mj_part_A"/>
@@ -8,6 +8,15 @@
     <rosparam file="$(find lio_sam_localization)/config/params_realrobot.yaml" command="load" />
     
     <param name="lio_sam/savePCDDirectory" value="/workspace/Mecanum-robot-slam-ws/pcl_map/$(arg map_name)/"/>
+
+    <!--- IMU -->
+    <include file="$(find ros-ngimu)/launch/run.launch" />
+    
+    <!--- mecanum control -->
+    <include file="$(find openrobot_control_6omni)/launch/openrobot_control_6omni.launch" />
+    
+    <!--- velodyne -->
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
 
     <!--- LOAM -->
     <include file="$(find lio_sam_localization)/launch/include/module_relocolize.launch" />

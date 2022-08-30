@@ -135,7 +135,7 @@ void FARMaster::Loop() {
   ros::Rate loop_rate(master_params_.main_run_freq);
   while (ros::ok()) {
     if (is_reset_env_) {
-      this->ResetEnvironmentAndGraph(); 
+      // this->ResetEnvironmentAndGraph(); 
       is_reset_env_ = false;
       if (FARUtil::IsDebug) ROS_WARN("****************** Graph and Env Reset ******************");
       loop_rate.sleep(); // skip this iteration

@@ -9,7 +9,7 @@
 
 ## 2. check usb port and port permission 
 	ls /dev/ttyUSB* 
-	sudo chmod 666 /dev/tty* # 1. vesc, 2. joy 3. imu 
+	sudo chmod 666 /dev/tty* # 0. vesc, 1. joy 2. imu 
 	
 ## 3. Record topic && play rosbag
 	rosbag record /velodyne_points /tf /imu/data
@@ -58,4 +58,4 @@
  	Failed to find libusb
 
 ## convert pcd to ply
-	https://imagetostl.com/kr/convert/file/pcd/to/ply
+	https://fabconvert.com/convert/pcd/to/ply
