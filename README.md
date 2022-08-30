@@ -31,7 +31,7 @@
 
 	roslaunch lio_sam run_real_robot.launch
 	roslaunch lio_sam_localization run_real_robot.launch map_name:="mj_part_A"
-	roslaunch far_planner run_real_robot.launch map_name:="mj_part_A
+	roslaunch far_planner run_real_robot.launch map_name:="mj_part_A"
 
 ## 7. gazebo simulation
 
