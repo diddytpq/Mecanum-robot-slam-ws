@@ -896,7 +896,7 @@ int main(int argc, char** argv)
           sensor_msgs::PointCloud2 freePaths2;
           pcl::toROSMsg(*freePaths, freePaths2);
           freePaths2.header.stamp = ros::Time().fromSec(odomTime);
-          freePaths2.header.frame_id = "vehicle";
+          freePaths2.header.frame_id = "base_link";
           pubFreePaths.publish(freePaths2);
           #endif
         }
