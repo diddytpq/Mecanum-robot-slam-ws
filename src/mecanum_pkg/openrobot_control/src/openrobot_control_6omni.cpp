@@ -50,7 +50,7 @@ typedef enum {
 #define RPS2DPS					RAD2DEG	
 
 // Uncomment this only when you want to see the below infomations.
-// #define PRINT_SENSOR_CORE
+//#define PRINT_SENSOR_CORE
 //#define PRINT_SENSOR_CUSTOMS
 
 void TeleopInput::keyboardCallback(const geometry_msgs::Twist::ConstPtr& cmd_vel)
@@ -81,9 +81,9 @@ void TeleopInput::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 	//ROS_INFO("%.3f, %.3f, %.3f, %.3f", joy->axes[0], joy->axes[1], joy->axes[2], joy->axes[3]);
 	//ROS_INFO("%d, %d, %d, %d", joy->buttons[0], joy->buttons[1], joy->buttons[2], joy->buttons[3]);	// 0, 1, 2, 3 : X, A, B, Y
 
-	joy_cmd_forward = -(joy->axes[0])*(1.0); // 5.5
-	joy_cmd_lateral = (joy->axes[3])*(1.0);
-	joy_cmd_steering = (joy->axes[1])*(0.5); // 3.5
+	joy_cmd_forward = -(joy->axes[0])*(3.); //5.5
+	joy_cmd_lateral = (joy->axes[3])*(3.); // 1.5
+	joy_cmd_steering = (joy->axes[1])*(1.); //
 
 	vh1_->speed[0] = joy_cmd_forward;
 	vh1_->speed[1] = joy_cmd_lateral;
@@ -400,11 +400,11 @@ int main(int argc, char **argv)
 	TeleopInput tele_input(teleop_vesc[0], teleop_vesc[1], teleop_vesc[2]);
 
 	// Velocity Profile
-	float amax = 3.0;	// m/s^2
+	float amax = 2.0;	// m/s^2
 	static float vout_x, vout_y, vout_z;
 	TrapezoidalVelProfile v_prof_x(amax, 1./rate_hz);
 	TrapezoidalVelProfile v_prof_y(1.0*amax, 1./rate_hz);
-	TrapezoidalVelProfile v_prof_z(4.*amax, 1./rate_hz);
+	TrapezoidalVelProfile v_prof_z(1.5*amax, 1./rate_hz);
 
 	// ROS Loop
 	uint32_t cnt_lp = 0;
@@ -441,12 +441,10 @@ int main(int argc, char **argv)
 		teleop_vesc[0]->controller_id[0] = TARGET_VESC_ID;
 		teleop_vesc[0]->custom_cmd_type[0] = COMM_SET_CURRENT;//COMM_SET_RELEASE;COMM_SET_DPS;COMM_SET_DUTY;//COMM_SET_GOTO;
 		teleop_vesc[0]->custom_cmd_value[0] = 0.;
-
 		//teleop_vesc[0]->controller_id[1] = 25;
 		//teleop_vesc[0]->custom_cmd_type[1] = COMM_SET_CURRENT;//COMM_SET_CURRENT;//COMM_SET_OR_GOTO;
 		//teleop_vesc[0]->custom_cmd_value[1] = 0.;//0.5;
 		teleop_vesc[0]->setCustomOut();
-
 		//ROS_INFO("rps_0:%.2f(dps_0:%.2f), rad_0:%.2f", teleop_vesc[0]->rps[0], teleop_vesc[0]->rps[0]*RPS2DPS, teleop_vesc[0]->rad[0]);
 		//ROS_INFO("rps_1:%.2f(dps_1:%.2f), rad_1:%.2f", teleop_vesc[0]->rps[1], teleop_vesc[0]->rps[1]*RPS2DPS, teleop_vesc[0]->rad[1]);
 		*/
