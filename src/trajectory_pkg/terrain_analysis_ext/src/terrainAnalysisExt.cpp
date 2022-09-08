@@ -155,7 +155,7 @@ void joystickHandler(const sensor_msgs::Joy::ConstPtr& joy)
 {
   if (joy->buttons[5] > 0.5)
   {
-    clearingCloud = true;
+    clearingCloud = false;
   }
 }
 

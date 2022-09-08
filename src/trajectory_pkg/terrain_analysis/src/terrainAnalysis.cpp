@@ -179,7 +179,7 @@ void laserCloudHandler(const sensor_msgs::PointCloud2ConstPtr &laserCloud2) {
 void joystickHandler(const sensor_msgs::Joy::ConstPtr &joy) {
   if (joy->buttons[5] > 0.5) {
     noDataInited = 0;
-    clearingCloud = true;
+    // clearingCloud = true;
   }
 }
 

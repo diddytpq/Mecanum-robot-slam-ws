@@ -4,8 +4,8 @@
 
   <node pkg="loam_interface" type="loamInterface" name="loamInterface" output="screen" required="true">
     <param name="stateEstimationTopic" type="string" value="$(arg odom_topic_name)" />
-    <!-- <param name="registeredScanTopic" type="string" value="/velodyne_points" /> -->
-    <param name="registeredScanTopic" type="string" value="/lio_sam/mapping/cloud_registered" />
+    <param name="registeredScanTopic" type="string" value="/velodyne_points" />
+    <!-- <param name="registeredScanTopic" type="string" value="/lio_sam/mapping/cloud_registered" /> -->
 
     <param name="flipStateEstimation" type="bool" value="false" />
     <param name="flipRegisteredScan" type="bool" value="false" />

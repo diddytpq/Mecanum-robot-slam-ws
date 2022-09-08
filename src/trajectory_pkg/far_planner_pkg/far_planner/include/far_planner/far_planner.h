@@ -132,7 +132,7 @@ private:
 
     inline void JoyCommandCallBack(const sensor_msgs::JoyConstPtr& msg) {
         if (msg->buttons[4] > 0.5) {
-            is_reset_env_ = true;
+            is_reset_env_ = false;
         }
     } 
 

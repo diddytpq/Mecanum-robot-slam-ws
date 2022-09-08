@@ -57,7 +57,7 @@ void TeleopPanel::pressButton1()
   if ( ros::ok() && velocity_publisher_ )
   {
     std_msgs::Empty msg;
-    // reset_publisher_.publish(msg);
+    reset_publisher_.publish(msg);
   }
 }
 
