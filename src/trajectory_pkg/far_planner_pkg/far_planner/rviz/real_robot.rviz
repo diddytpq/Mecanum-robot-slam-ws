@@ -24,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: LocalFreePaths
+    SyncSource: OverallMap
   - Class: rviz/ControlPanel
     Name: ControlPanel
 Preferences:
@@ -332,28 +332,13 @@ Visualization Manager:
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
-      Enabled: true
+      Enabled: false
       Marker Topic: /viz_graph_topic
       Name: GlobalGraph
       Namespaces:
-        angle_direct: true
-        freespace_vertex: true
-        freespace_vgraph: true
-        frontier_vertex: true
-        global_vertex: true
-        global_vgraph: true
-        localrange_vertex: true
-        odom_edge: true
-        polygon_edge: true
-        to_goal_edge: true
-        trajectory_edge: true
-        trajectory_vertex: true
-        updating_vertex: true
-        vertex_angle: true
-        vertices_matches: true
-        visibility_edge: true
+        {}
       Queue Size: 100
-      Value: true
+      Value: false
     - Class: rviz/MarkerArray
       Enabled: true
       Marker Topic: /viz_poly_topic
@@ -520,16 +505,13 @@ Visualization Manager:
       Use rainbow: true
       Value: false
     - Class: rviz/MarkerArray
-      Enabled: true
+      Enabled: false
       Marker Topic: /viz_viewpoint_extend_topic
       Name: ViewpointExtend
       Namespaces:
-        corner_direct: true
-        extend_viewpoint: true
-        origin_viewpoint: true
-        raytracing_line: true
+        {}
       Queue Size: 100
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0
@@ -545,7 +527,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 45.76328659057617
+      Distance: 67.65826416015625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -553,9 +535,9 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -5.441503047943115
-        Y: -2.09089994430542
-        Z: -6.161399841308594
+        X: -6.771860122680664
+        Y: -5.867759704589844
+        Z: -2.751812696456909
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
@@ -563,7 +545,7 @@ Visualization Manager:
       Near Clip Distance: 0.009999999776482582
       Pitch: 1.5697963237762451
       Target Frame: base_link
-      Yaw: 1.5500011444091797
+      Yaw: 1.4950028657913208
     Saved: ~
 Window Geometry:
   ControlPanel:

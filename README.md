@@ -25,7 +25,7 @@
 ## 5. Run localization based lio sam
  *https://github.com/Gaochao-hit/LIO-SAM_based_relocalization
 
-	roslaunch lio_sam_localization run.launch
+	roslaunch lio_sam_localization run.launch map_name:="mj_part_A"
 	
 ## 6. real robot version
 
