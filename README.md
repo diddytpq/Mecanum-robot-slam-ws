@@ -7,6 +7,9 @@
 ### 1.2 GTSAM
 	https://github.com/diddytpq/LIO-SAM/tree/noetic
 
+### 1.3 Ros dep
+	rosdep install --from-paths ~/your_workspace/src --ignore-src -r -y
+
 ## 2. check usb port and port permission 
 	ls /dev/ttyUSB* 
 	sudo chmod 666 /dev/tty* # 0. vesc, 1. joy 2. imu 
