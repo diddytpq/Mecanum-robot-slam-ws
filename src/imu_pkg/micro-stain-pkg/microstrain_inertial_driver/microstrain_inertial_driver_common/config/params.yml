@@ -27,7 +27,7 @@ diagnostics : False
 imu_frame_id          : "sensor"
 gnss1_frame_id        : "gnss1_antenna_wgs84"
 gnss2_frame_id        : "gnss2_antenna_wgs84"
-filter_frame_id       : "sensor_wgs84"
+filter_frame_id       : "sensor"
 filter_child_frame_id : "sensor"
 nmea_frame_id         : "nmea"
 
@@ -178,7 +178,7 @@ publish_nmea   : False
 # ****************************************************************** 
 
 publish_filter   : True
-filter_data_rate : 10
+filter_data_rate : 500
 
 # The speed at which the individual Filter publishers will publish at.
 #      If set to -1, will use filter_data_rate to determine the rate at which to stream and publish
