@@ -10,7 +10,10 @@
     <param name="lio_sam/savePCDDirectory" value="/workspace/Mecanum-robot-slam-ws/pcl_map/$(arg map_name)/"/>
 
     <!--- IMU -->
-    <include file="$(find ros-ngimu)/launch/run.launch" />
+    <!-- <include file="$(find ros-ngimu)/launch/run.launch" /> -->
+    <include file="$(find microstrain_inertial_driver)/launch/microstrain.launch" >
+        <arg name="port" value="/dev/ttyACM2"/>
+    </include>
     
     <!--- mecanum control -->
     <include file="$(find openrobot_control_6omni)/launch/openrobot_control_6omni.launch" />

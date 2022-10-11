@@ -12,7 +12,7 @@
 
 ## 2. check usb port and port permission 
 	ls /dev/ttyUSB* 
-	sudo chmod 666 /dev/tty* # 0. vesc, 1. joy 2. imu 
+	sudo chmod 666 /dev/ttyACM* # 0. vesc, 1. joy 2. imu 
 	
 ## 3. Record topic && play rosbag
 	rosbag record /velodyne_points /tf /imu/data
