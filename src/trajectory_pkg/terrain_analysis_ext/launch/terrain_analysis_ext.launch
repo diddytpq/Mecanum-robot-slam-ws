@@ -17,7 +17,7 @@
     <param name="voxelTimeUpdateThre" type="double" value="2.0" />
     <param name="lowerBoundZ" type="double" value="-0.5" />
     <param name="upperBoundZ" type="double" value="0.5" />
-    <param name="disRatioZ" type="double" value="0.5" />
+    <param name="disRatioZ" type="double" value="1.57" />
     <!-- <param name="disRatioZ" type="double" value="1.0" /> -->
     
 

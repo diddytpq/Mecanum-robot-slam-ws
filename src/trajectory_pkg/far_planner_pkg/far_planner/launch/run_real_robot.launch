@@ -4,7 +4,6 @@
   <arg name="cameraOffsetZ" default="-0.2"/>
   <arg name="vehicleX" default="0"/>
   <arg name="vehicleY" default="0"/>
-  <arg name="checkTerrainConn" default="false"/>
 
   <arg name="odom_name" default="/lio_sam/mapping/odometry"/>
 
@@ -22,9 +21,7 @@
 
   <include file="$(find terrain_analysis)/launch/terrain_analysis.launch" />
 
-  <include file="$(find terrain_analysis_ext)/launch/terrain_analysis_ext.launch" >
-    <arg name="checkTerrainConn" value="$(arg checkTerrainConn)"/>
-  </include>
+  <include file="$(find terrain_analysis_ext)/launch/terrain_analysis_ext.launch" />
 
   <include file="$(find sensor_scan_generation)/launch/sensor_scan_generation.launch" />
 
