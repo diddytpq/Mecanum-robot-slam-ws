@@ -4,10 +4,14 @@
 
 ### 1.1. pcl ver  
 	https://ropiens.tistory.com/65
-### 1.2 GTSAM
+	
+### 1.2 OPENCV (version == 4.2.0)
+	https://webnautes.tistory.com/1186
+	
+### 1.3 GTSAM
 	https://github.com/diddytpq/LIO-SAM/tree/noetic
 
-### 1.3 Ros dep
+### 1.4 Ros dep
 	rosdep install --from-paths ~/your_workspace/src --ignore-src -r -y
 
 ## 2. check usb port and port permission 
